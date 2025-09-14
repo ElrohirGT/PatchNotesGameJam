@@ -8,14 +8,22 @@ size = Vector2(1290.5, 135)
 [node name="World" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_nnsk1")]
-position = Vector2(548, 315)
+position = Vector2(110, 480)
 SPEED = 400.0
+JUMP_VELOCITY = -600.0
 MAX_FALL_SPEED = 2000
-PLAYER_GRAVITY = 900
+PLAYER_GRAVITY = 1000
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
+[node name="Platform" type="StaticBody2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform"]
 position = Vector2(610.75, 618.5)
+shape = SubResource("RectangleShape2D_nnsk1")
+debug_color = Color(0.900294, 0.000166917, 0.763106, 0.42)
+
+[node name="Platform2" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform2"]
+position = Vector2(1803, 482)
 shape = SubResource("RectangleShape2D_nnsk1")
 debug_color = Color(0.900294, 0.000166917, 0.763106, 0.42)
