@@ -1,8 +1,21 @@
-[gd_scene load_steps=2 format=3 uid="uid://1wv4fvosfnev"]
+[gd_scene load_steps=3 format=3 uid="uid://1wv4fvosfnev"]
 
 [ext_resource type="PackedScene" uid="uid://djrcu2ydpp62q" path="res://scenes/mobs/player.tscn" id="1_nnsk1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nnsk1"]
+size = Vector2(1290.5, 135)
 
 [node name="World" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_nnsk1")]
-position = Vector2(525, 315)
+position = Vector2(548, 315)
+SPEED = 400.0
+MAX_FALL_SPEED = 2000
+PLAYER_GRAVITY = 900
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(610.75, 618.5)
+shape = SubResource("RectangleShape2D_nnsk1")
+debug_color = Color(0.900294, 0.000166917, 0.763106, 0.42)
