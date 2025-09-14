@@ -6,6 +6,8 @@ extends CharacterBody2D
 @export var MAX_FALL_SPEED = 1000
 @export var PLAYER_GRAVITY = 10
 
+@export var CAN_PHASE = false
+
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
@@ -14,6 +16,16 @@ func _physics_process(delta: float) -> void:
 	# Handle jump.
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
+		
+	if Input.is_action_just_pressed("toggle_phase"):
+		var collider: CollisionObject2D = $"."
+		CAN_PHASE = not CAN_PHASE
+		if CAN_PHASE:
+			collider.set_collision_mask_value(3, false)
+			print("Phasing activated!")
+		else:
+			collider.set_collision_mask_value(3, true)
+			print("Phasing deactivated!")
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
