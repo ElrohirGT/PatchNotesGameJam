@@ -1,0 +1,79 @@
+[gd_scene load_steps=10 format=3 uid="uid://uegt3o13c6sl"]
+
+[ext_resource type="Script" uid="uid://blcfcyfnbm41a" path="res://scripts/main_screen.gd" id="1_7fvvs"]
+[ext_resource type="Texture2D" uid="uid://tktcwy1dkqap" path="res://assets/screen.png" id="2_a46j4"]
+[ext_resource type="Texture2D" uid="uid://vvh6uryow5ym" path="res://assets/2.png" id="2_w87pm"]
+[ext_resource type="Texture2D" uid="uid://cnjn1yffwdfa0" path="res://assets/1.png" id="3_a46j4"]
+[ext_resource type="Texture2D" uid="uid://bx5x0nasc8kyv" path="res://assets/4.png" id="4_23dc1"]
+[ext_resource type="Texture2D" uid="uid://cxgxt4ak5mqci" path="res://assets/3.png" id="5_il54y"]
+[ext_resource type="Texture2D" uid="uid://cjckix0w0qh52" path="res://assets/title.png" id="7_23dc1"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_il54y"]
+texture = ExtResource("2_a46j4")
+modulate_color = Color(0.733005, 0.733005, 0.733005, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4takm"]
+texture = ExtResource("7_23dc1")
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_7fvvs")
+
+[node name="Screen" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_il54y")
+
+[node name="Start" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -49.0
+offset_top = 37.0
+offset_right = 525.0
+offset_bottom = 145.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.240649, 0.2877)
+texture_normal = ExtResource("2_w87pm")
+texture_hover = ExtResource("3_a46j4")
+
+[node name="Quit" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -33.0
+offset_top = 83.0
+offset_right = 382.0
+offset_bottom = 190.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.240649, 0.287701)
+texture_normal = ExtResource("4_23dc1")
+texture_hover = ExtResource("5_il54y")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 421.0
+offset_top = 204.0
+offset_right = 775.0
+offset_bottom = 315.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_4takm")
+
+[connection signal="pressed" from="Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]
