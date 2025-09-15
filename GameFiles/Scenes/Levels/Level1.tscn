@@ -1,11 +1,35 @@
-[gd_scene load_steps=3 format=3 uid="uid://d3miortctjpd6"]
+[gd_scene load_steps=7 format=3 uid="uid://d3miortctjpd6"]
 
 [ext_resource type="PackedScene" uid="uid://duav4up8ma3ko" path="res://GameFiles/Scenes/Levels/maps/map1.tscn" id="1_vt0ta"]
 [ext_resource type="PackedScene" uid="uid://dkg3jpc8sxh7k" path="res://GameFiles/Scenes/player.tscn" id="2_lk5gm"]
+[ext_resource type="Script" uid="uid://g5tuj552bj31" path="res://GameFiles/Scenes/Levels/witch_area.gd" id="3_lk5gm"]
+[ext_resource type="PackedScene" uid="uid://dukh3x6ukbt5k" path="res://witch.tscn" id="4_xrwdn"]
+[ext_resource type="PackedScene" uid="uid://mdlklwkyf6q4" path="res://Dialog.tscn" id="5_5au25"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vt0ta"]
+size = Vector2(84.5, 111.406)
 
 [node name="Node2D" type="Node2D"]
 
 [node name="world1" parent="." instance=ExtResource("1_vt0ta")]
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("2_lk5gm")]
-position = Vector2(1886, 506)
+position = Vector2(-496, -20)
+
+[node name="Panel" parent="CharacterBody2D" groups=["DialogUI"] instance=ExtResource("5_5au25")]
+
+[node name="WitchArea" type="Area2D" parent="."]
+script = ExtResource("3_lk5gm")
+witch_scene = ExtResource("4_xrwdn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WitchArea"]
+position = Vector2(19, -58.2969)
+shape = SubResource("RectangleShape2D_vt0ta")
+
+[node name="SignArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SignArea"]
+position = Vector2(105.5, 689.813)
+shape = SubResource("RectangleShape2D_vt0ta")
+
+[connection signal="body_entered" from="WitchArea" to="WitchArea" method="_on_body_entered"]

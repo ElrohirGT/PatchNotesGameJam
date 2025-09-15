@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://mdlklwkyf6q4"]
+
+[ext_resource type="Script" uid="uid://dtdrvtgoph0x8" path="res://Dialog.gd" id="1_gdqse"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+script = ExtResource("1_gdqse")
+
+[node name="Panel" type="Panel" parent="."]
+offset_left = 600.0
+offset_top = 524.0
+offset_right = 800.0
+offset_bottom = 564.0
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="Writertimer" type="Timer" parent="."]

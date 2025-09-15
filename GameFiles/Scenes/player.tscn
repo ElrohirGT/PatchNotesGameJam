@@ -30,6 +30,11 @@ var spawn_point: Vector2 = Vector2.ZERO
 const GROUND_LAYER: int = 1
 const SPECIAL_LAYER: int = 2
 
+
+# Cine 
+var can_move: bool = true
+
+
 func _ready() -> void:
 	
 	# Buscar el TileMapLayer especial en la escena
@@ -96,7 +101,14 @@ func _on_checkpoint_body_entered(body: Node2D) -> void:
 
 func _physics_process(delta: float) -> void:
 	if is_dying: return
-
+	
+	
+	if not can_move:
+		velocity.x = move_toward(velocity.x, 0, SPEED)
+		move_and_slide()
+		return
+		
+		
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 
@@ -359,7 +371,7 @@ states/Start/position = Vector2(441, 155)
 transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_4ddha"), "Idle", "Run", SubResource("AnimationNodeStateMachineTransition_7b0ub"), "Run", "Idle", SubResource("AnimationNodeStateMachineTransition_n152d"), "Idle", "Roll", SubResource("AnimationNodeStateMachineTransition_inc2w"), "Roll", "Idle", SubResource("AnimationNodeStateMachineTransition_2dw6i"), "Run", "Hit", SubResource("AnimationNodeStateMachineTransition_uhl3m"), "Hit", "Run", SubResource("AnimationNodeStateMachineTransition_hd4h8"), "Idle", "Hit", SubResource("AnimationNodeStateMachineTransition_q5ch7"), "Hit", "Idle", SubResource("AnimationNodeStateMachineTransition_hy4jb"), "Roll", "Hit", SubResource("AnimationNodeStateMachineTransition_11s07"), "Hit", "Roll", SubResource("AnimationNodeStateMachineTransition_flwea"), "Hit", "Death", SubResource("AnimationNodeStateMachineTransition_lar2y"), "Death", "Idle", SubResource("AnimationNodeStateMachineTransition_i41qs")]
 graph_offset = Vector2(213.078, 51.3448)
 
-[node name="CharacterBody2D" type="CharacterBody2D"]
+[node name="CharacterBody2D" type="CharacterBody2D" groups=["Player"]]
 collision_layer = 3
 collision_mask = 13
 script = SubResource("GDScript_0lx72")
@@ -380,7 +392,7 @@ position = Vector2(0, -2)
 texture = ExtResource("2_i41qs")
 hframes = 8
 vframes = 8
-frame = 3
+frame = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="SpriteNormal"]
 libraries = {
@@ -401,7 +413,7 @@ position = Vector2(0, -2)
 texture = ExtResource("2_lar2y")
 hframes = 8
 vframes = 8
-frame = 3
+frame = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="SpritePower"]
 libraries = {
