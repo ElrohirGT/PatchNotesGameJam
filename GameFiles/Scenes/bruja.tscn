@@ -1,0 +1,46 @@
+[gd_scene load_steps=7 format=3 uid="uid://dmghy5m02diwc"]
+
+[ext_resource type="Texture2D" uid="uid://dwvuukq3c4vxl" path="res://GameFiles/assets/MyAssets/witch.png" id="1_edily"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xrwdn"]
+atlas = ExtResource("1_edily")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5au25"]
+atlas = ExtResource("1_edily")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dula6"]
+atlas = ExtResource("1_edily")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0nxxt"]
+atlas = ExtResource("1_edily")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_k4djc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xrwdn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5au25")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dula6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0nxxt")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="BrujaASprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(104.29, -13)
+sprite_frames = SubResource("SpriteFrames_k4djc")
+flip_h = true

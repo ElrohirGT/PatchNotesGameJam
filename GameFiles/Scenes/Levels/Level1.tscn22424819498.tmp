@@ -1,10 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://d3miortctjpd6"]
+[gd_scene load_steps=5 format=3 uid="uid://d3miortctjpd6"]
 
 [ext_resource type="PackedScene" uid="uid://duav4up8ma3ko" path="res://GameFiles/Scenes/Levels/maps/map1.tscn" id="1_vt0ta"]
 [ext_resource type="PackedScene" uid="uid://dkg3jpc8sxh7k" path="res://GameFiles/Scenes/player.tscn" id="2_lk5gm"]
 [ext_resource type="Script" uid="uid://bc211bqp83164" path="res://GameFiles/Scenes/Levels/trigger_bruja.gd" id="3_xrwdn"]
-[ext_resource type="PackedScene" uid="uid://bu5vx08bip4ar" path="res://bruja.tscn" id="4_xrwdn"]
-[ext_resource type="PackedScene" uid="uid://bspibjrb024qi" path="res://Dialog.tscn" id="5_5au25"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vt0ta"]
 size = Vector2(73, 109)
@@ -18,12 +16,9 @@ position = Vector2(-511, -19)
 
 [node name="TriggerBruja" type="Area2D" parent="."]
 script = ExtResource("3_xrwdn")
-bruja_scene = ExtResource("4_xrwdn")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TriggerBruja"]
 position = Vector2(-1.5, -51.5)
 shape = SubResource("RectangleShape2D_vt0ta")
-
-[node name="CanvasLayer" parent="." instance=ExtResource("5_5au25")]
 
 [connection signal="body_entered" from="TriggerBruja" to="TriggerBruja" method="_on_body_entered"]

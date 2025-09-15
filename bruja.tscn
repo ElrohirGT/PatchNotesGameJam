@@ -1,0 +1,55 @@
+[gd_scene load_steps=8 format=3 uid="uid://bu5vx08bip4ar"]
+
+[ext_resource type="Texture2D" uid="uid://dwvuukq3c4vxl" path="res://GameFiles/assets/MyAssets/witch.png" id="1_edily"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_edily"]
+atlas = ExtResource("1_edily")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k4djc"]
+atlas = ExtResource("1_edily")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4yf0a"]
+atlas = ExtResource("1_edily")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4jqdw"]
+atlas = ExtResource("1_edily")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8whgg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_edily")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k4djc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4yf0a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4jqdw")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_edily"]
+radius = 6.0
+height = 16.0
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_8whgg")
+animation = &"idle"
+frame_progress = 0.681796
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 4)
+shape = SubResource("CapsuleShape2D_edily")
