@@ -1,0 +1,83 @@
+[gd_scene load_steps=10 format=3 uid="uid://ti77pslir37t"]
+
+[ext_resource type="Texture2D" uid="uid://bjw1lmggv1je" path="res://GameFiles/assets/images/screen.png" id="1_mapfv"]
+[ext_resource type="Texture2D" uid="uid://cyhw0wg4s1imn" path="res://GameFiles/assets/images/title.png" id="2_cd6b3"]
+[ext_resource type="Texture2D" uid="uid://dx1amrmri8du3" path="res://GameFiles/assets/images/2.png" id="3_fgo23"]
+[ext_resource type="Texture2D" uid="uid://cslotkq71fpru" path="res://GameFiles/assets/images/1.png" id="4_hav8v"]
+[ext_resource type="Texture2D" uid="uid://bc708i4ghfs4m" path="res://GameFiles/assets/images/4.png" id="5_bnusr"]
+[ext_resource type="Texture2D" uid="uid://dsy3iqq4o5618" path="res://GameFiles/assets/images/3.png" id="6_g2jev"]
+
+[sub_resource type="GDScript" id="GDScript_cd6b3"]
+script/source = "extends Control
+
+
+func _on_start_pressed() -> void:
+	get_tree().change_scene_to_file(\"res://GameFiles/Scenes/Levels/Level1.tscn\")
+
+
+func _on_exit_pressed() -> void:
+	get_tree().quit()
+"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_t25tw"]
+texture = ExtResource("1_mapfv")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_l2ks0"]
+texture = ExtResource("2_cd6b3")
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = SubResource("GDScript_cd6b3")
+
+[node name="Background" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_t25tw")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -288.0
+offset_top = -211.5
+offset_right = 288.0
+offset_bottom = 211.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 50
+
+[node name="Title" type="Panel" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_l2ks0")
+
+[node name="Start" type="TextureButton" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+texture_normal = ExtResource("3_fgo23")
+texture_hover = ExtResource("4_hav8v")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Exit" type="TextureButton" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+texture_normal = ExtResource("5_bnusr")
+texture_hover = ExtResource("6_g2jev")
+ignore_texture_size = true
+stretch_mode = 5
+
+[connection signal="pressed" from="VBoxContainer/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="VBoxContainer/Exit" to="." method="_on_exit_pressed"]
