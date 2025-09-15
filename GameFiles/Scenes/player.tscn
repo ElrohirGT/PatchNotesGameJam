@@ -357,9 +357,11 @@ states/Run/node = SubResource("AnimationNodeAnimation_it8h5")
 states/Run/position = Vector2(761, -4)
 states/Start/position = Vector2(441, 155)
 transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_4ddha"), "Idle", "Run", SubResource("AnimationNodeStateMachineTransition_7b0ub"), "Run", "Idle", SubResource("AnimationNodeStateMachineTransition_n152d"), "Idle", "Roll", SubResource("AnimationNodeStateMachineTransition_inc2w"), "Roll", "Idle", SubResource("AnimationNodeStateMachineTransition_2dw6i"), "Run", "Hit", SubResource("AnimationNodeStateMachineTransition_uhl3m"), "Hit", "Run", SubResource("AnimationNodeStateMachineTransition_hd4h8"), "Idle", "Hit", SubResource("AnimationNodeStateMachineTransition_q5ch7"), "Hit", "Idle", SubResource("AnimationNodeStateMachineTransition_hy4jb"), "Roll", "Hit", SubResource("AnimationNodeStateMachineTransition_11s07"), "Hit", "Roll", SubResource("AnimationNodeStateMachineTransition_flwea"), "Hit", "Death", SubResource("AnimationNodeStateMachineTransition_lar2y"), "Death", "Idle", SubResource("AnimationNodeStateMachineTransition_i41qs")]
-graph_offset = Vector2(477.679, 56.0938)
+graph_offset = Vector2(213.078, 51.3448)
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
+collision_layer = 3
+collision_mask = 13
 script = SubResource("GDScript_0lx72")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -378,7 +380,7 @@ position = Vector2(0, -2)
 texture = ExtResource("2_i41qs")
 hframes = 8
 vframes = 8
-frame = 2
+frame = 3
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="SpriteNormal"]
 libraries = {
@@ -399,7 +401,7 @@ position = Vector2(0, -2)
 texture = ExtResource("2_lar2y")
 hframes = 8
 vframes = 8
-frame = 2
+frame = 3
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="SpritePower"]
 libraries = {
